@@ -3,12 +3,12 @@ require_relative 'bicycle'
 class RecumbentBike < Bicycle
   attr_reader :flag
 
-  def initialize(args)
+  def post_initialize(args)
     @flag = args[:flag]
   end
 
-  def spares
-    super.merge({ flag: flag })
+  def local_spares
+    { flag: flag }
   end
 
   def default_chain
@@ -21,4 +21,5 @@ class RecumbentBike < Bicycle
 end
 
 bent = RecumbentBike.new(flag: 'tall and orange')
+p bent
 p bent.spares
