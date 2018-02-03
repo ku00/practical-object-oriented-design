@@ -1,11 +1,16 @@
+require 'forwardable'
+
 class Parts
-  attr_reader :parts
+  extend Forwardable
+  include Enumerable
+
+  def_delegators :@parts, :size, :each
 
   def initialize(parts)
     @parts = parts
   end
 
   def spares
-    parts.select { |part| part.needs_spare }
+    select { |part| part.needs_spare }
   end
 end

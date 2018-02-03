@@ -58,11 +58,20 @@ front_shock = Part.new(
   needs_spare: false
 )
 
-mountain_bike_parts = Parts.new([mountain_tire, front_shock, rear_shock])
+mountain_bike_parts = Parts.new(
+  [
+    chain,
+    mountain_tire,
+    front_shock,
+    rear_shock,
+  ]
+)
 mountain_bike = Bicycle.new(
   size: 'M',
   parts: mountain_bike_parts
 )
 
 p mountain_bike.size
-mountain_bike.spares.each { |spare| puts spare.inspect }
+# mountain_bike.spares.each { |spare| puts spare.inspect }
+p mountain_bike.spares.size
+p mountain_bike.parts.size
