@@ -1,14 +1,19 @@
 require 'minitest/autorun'
 require_relative 'gear'
-require_relative 'wheel'
+
+class DiameterDouble
+  def diameter
+    10
+  end
+end
 
 class TestGear < Minitest::Test
   def test_calculates_gear_inches
     gear = Gear.new(
       chainring: 52,
       cog: 11,
-      wheel: Wheel.new(26, 1.5)
+      wheel: DiameterDouble.new
     )
-    assert_in_delta(137.1, gear.gear_inches, 0.01)
+    assert_in_delta(47.27, gear.gear_inches, 0.01)
   end
 end
